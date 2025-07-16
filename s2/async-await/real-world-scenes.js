@@ -41,7 +41,17 @@ fetch(API)
     data = res
   })
 
+/**
+ * You can warp it into setTimeout and get data
+ */
 setTimeout(() => {
   console.log(data)
 }, 2000)
+/**
+ * here we get undefined because, at the time of execution, promise is not yet resolved. but we have data inside "data" variable.
+ */
+// console.log(data)
+/**
+ * You can use a function to get data from fetch and .then use this
+ */
 // getData()

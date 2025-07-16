@@ -16,5 +16,5 @@ fetch(API)
 
 setTimeout(() => {
   console.log(data)
-}, 2000)
+}, 0)
 // getData()
