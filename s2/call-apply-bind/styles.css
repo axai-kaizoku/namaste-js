@@ -50,7 +50,3 @@ h1 {
   background-color: var(--secondary);
   color: var(--secondary-foreground);
 }
-
-.btn:active {
-  transform: translateY(1px);
-}
