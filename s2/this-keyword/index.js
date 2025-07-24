@@ -63,4 +63,9 @@ const obj2 = {
 
 obj2.x()
 
-// this inside DOM
+// this inside DOM elements => reference to HTML Element
+
+const button = document.querySelector(".btn")
+button.addEventListener("click", function () {
+  console.log(this)
+})
