@@ -1,5 +1,3 @@
-// Currying using bind method
-
 let multiply = function (x, y) {
   console.log(x * y)
 }
@@ -23,3 +21,27 @@ let multiplyByThreeClosure = multiplyClosure(3)
 
 multiplyByTwoClosure(2)
 multiplyByThreeClosure(2)
+
+/**
+ * Currying real-world example
+ */
+
+/**
+ * Send email
+ */
+function sendEmail(email) {
+  return (subject) => {
+    return (body) => {
+      return `{
+        email:${email},
+        subject:${subject},
+        body: ${body},
+      }`
+    }
+  }
+}
+
+const step1 = sendEmail("akshay@gmail.com")
+const step2 = step1("This is subject broo")
+const step3 = step2("this is body of that email.")
+console.log(step3)
