@@ -45,3 +45,44 @@ const arr = [1, [2, 3, [4, 5]], [6, 7], [[[[[[[[[[8]]]]]]]]]]]
 
 const flattened = flatIt(arr)
 console.log(flattened)
+
+console.clear()
+
+async function chain() {
+  console.log("1")
+  await Promise.resolve(setTimeout(() => console.log("5"), 0))
+  console.log("2")
+  await Promise.resolve(setTimeout(() => console.log("6"), 0))
+  console.log("3")
+}
+chain()
+setTimeout(() => {
+  console.log("7")
+}, 0)
+console.log("4")
+
+console.clear()
+
+function maxLenOptimal(nums) {
+  const n = nums.length
+  debugger
+  let preFixSum = 0,
+    maxi = 0
+  const map = new Map()
+  for (let i = 0; i < n; i++) {
+    preFixSum += nums[i]
+    if (preFixSum === 0) {
+      maxi = i + 1
+    } else {
+      if (map.has(preFixSum)) {
+        maxi = Math.max(maxi, i - map.get(preFixSum))
+      } else {
+        map.set(preFixSum, i)
+      }
+    }
+  }
+
+  return maxi
+}
+
+console.log(maxLenOptimal([1, -1, 3, 2, 1, 4]))

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+    <style>
+      #users-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="search" id="search" placeholder="search.." />
+    <ul id="users-list"></ul>
+    <pre id="pre-tag"></pre>
+    <script>
+      const preTag = document.getElementById("pre-tag")
+
+      window.addEventListener("resize", () => {
+        const width = window.innerWidth,
+          height = window.innerHeight
+        console.log({ width, height })
+        preTag.innerText = `${width}, ${height}`
+      })
+
+      // Display initial window size
+      preTag.innerText = `${window.innerWidth}, ${window.innerHeight}`
+
+      const users = ["Alice", "Bob", "Charlie", "David", "Eve"]
+      const usersList = document.getElementById("users-list")
+
+      users
+        .map((user) => {
+          const li = document.createElement("li")
+          li.textContent = user
+          return li
+        })
+        .forEach((u) => usersList.appendChild(u))
+
+      const searchBar = document.querySelector("#search")
+      searchBar.addEventListener("input", (e) => {
+        console.log(window.innerWidth)
+        const searchValue = e.target.value.toLowerCase()
+        const filteredUsers = users.filter((user) =>
+          user.toLowerCase().includes(searchValue),
+        )
+        usersList.innerHTML = ""
+        filteredUsers
+          .map((user) => {
+            const li = document.createElement("li")
+            li.textContent = user
+            return li
+          })
+          .forEach((u) => usersList.appendChild(u))
+      })
+    </script>
+  </body>
+</html>
